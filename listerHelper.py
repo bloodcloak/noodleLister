@@ -15,9 +15,9 @@ def keyInDict(dict, key): # Helper to check if song already has been added to pl
         return False
 
 # Config Vars
-progNam = "Noodlelister v1.1.1"
-apiURL = 'https://beatsaver.com/api/maps/detail/'
-headers = {'User-Agent': 'Noodlelister v1.1.1'}
+progNam = "Noodlelister v2.0" 
+apiURL = 'https://api.beatsaver.com/maps/id/' 
+headers = {'User-Agent': 'Noodlelister v2.0'} 
 
 currentDirectory = getcwd()
 
@@ -112,10 +112,10 @@ def processSongs(songList):
             rDict = json.loads(r.text)
 
             try:
-              mapObject = {'key': rDict['key'],
-                          'hash': rDict['hash'],
+              mapObject = {'key': rDict['id'], 
+                          'hash': rDict['versions'][0]['hash'],
                           'songName': '{} - {}'.format(rDict['metadata']['songAuthorName'], rDict['metadata']['songName']),
-                          'uploader': rDict['uploader']['username']}
+                          'uploader': rDict['uploader']['name']}
             except:
               messageLog = messageLog+("Map Key: {} API Response Not Valid! Skipping...\n".format(mapKey))
               continue

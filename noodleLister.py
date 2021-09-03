@@ -5,7 +5,7 @@ from time import sleep
 from sys import exit
 
 # Config Vars
-progNam = "Noodlelister v1.1.1"
+progNam = "Noodlelister v2.0"
 
 # Data class
 class programData:
